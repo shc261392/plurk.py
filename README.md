@@ -6,7 +6,7 @@ An unofficial library of interacting with Plurk API 2.0 for Python 3.7+.
 ## Installation
 
 ```shell
-$ pip3 install https://github.com/shc261392/plurk.py
+$ pip3 install git+https://github.com/shc261392/plurk.py
 ```
 
 ## Quickstart
@@ -19,7 +19,7 @@ to register your app and retrieve your app key and app secret.
 
 
 ```python
-from plurk.py import Client
+from plurk import Client
 
 APP_KEY = '<your-plurk-app-key>'
 APP_SECRET = '<your-plurk-app-secret>'
