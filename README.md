@@ -44,11 +44,18 @@ with Client(APP_KEY, APP_SECRET) as client:
 ```shell
 $ git clone git@github.com:shc261392/plurk.py.git
 $ cd plurk.py
-$ make install
 $ make test
+$ make install
 ```
 
 `make install` will automatically create a virtualenv in the current folder named `.venv`.
+
+## Dependencies
+
+**plurk.py** depends on the following brilliant works:
+- [Authlib](https://github.com/lepture/authlib) for OAuth. The project uses the [forked version](https://github.com/shc261392/authlib).
+- [httpx](https://github.com/encode/httpx), an solid library for both sync and async HTTP requests
+- [pydantic](https://github.com/pydantic/pydantic) for building data models with great typing and validation support.
 
 ## TODOs
 
