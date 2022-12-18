@@ -1,5 +1,11 @@
-VENV_DIR=.venv
-VENV_PYTHON=$(VENV_DIR)/bin/python3
+VENV_DIR := venv
+ifeq ($(OS),Windows_NT)
+    BIN_DIR := $(VENV_DIR)/Scripts
+	VENV_PYTHON := $(BIN_DIR)/python
+else
+    BIN_DIR := $(VENV_DIR)/bin
+	VENV_PYTHON := $(BIN_DIR)/python3
+endif
 
 
 $(VENV_PYTHON):
@@ -15,18 +21,18 @@ install: $(VENV_PYTHON) requirements.txt
 	$(VENV_PYTHON) -m pip install -e .
 
 
-$(VENV_DIR)/bin/tox: $(VENV_PYTHON)
+$(BIN_DIR)/tox: $(VENV_PYTHON)
 	$(VENV_PYTHON) -m pip install tox
 
 
 .PHONY: lint
-lint: $(VENV_DIR)/bin/tox
-	$(VENV_DIR)/bin/tox -e flake8,pylint,bandit
+lint: $(BIN_DIR)/tox
+	$(BIN_DIR)/tox -e flake8,pylint,bandit
 
 
 .PHONY: test
-test: $(VENV_DIR)/bin/tox
-	$(VENV_DIR)/bin/tox -e pytest,report
+test: $(BIN_DIR)/tox
+	$(BIN_DIR)/tox -e pytest,report
 
 
 .PHONY: clean
