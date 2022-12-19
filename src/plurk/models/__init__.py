@@ -1,7 +1,8 @@
-from .user_data import UserData, UpdateAvatarResponse
-
+from .karma_stats import KarmaStats
+from .user_data import UpdateAvatarResponse, UserData
 
 __all__ = [
+    'KarmaStats',
     'UserData',
     'UpdateAvatarResponse',
 ]

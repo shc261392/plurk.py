@@ -1,10 +1,10 @@
 from datetime import datetime
 from typing import List
 
-from pydantic import BaseModel
+from plurk.models.base import ResponseBase
 
 
-class KarmaStats(BaseModel):
+class KarmaStats(ResponseBase):
     """Data returned by `/APP/Users/getKarmaStats` endpoint
     """
     current_karma: float

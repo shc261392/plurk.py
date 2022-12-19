@@ -4,6 +4,7 @@ from typing import Any, List, Optional
 
 from pydantic import BaseModel
 
+from plurk.models.base import ResponseBase
 from plurk.utils import parse_time_validator
 
 
@@ -42,7 +43,7 @@ class Privacy(str, Enum):
     ONLY_FRIENDS = 'only_friends'
 
 
-class BaseUserData(BaseModel):
+class BaseUserData(ResponseBase):
     """Base class for user data
     """
     id: int

@@ -3,17 +3,7 @@ from typing import Union
 
 from pydantic import validator
 
-
-def format_date(date: Union[str, datetime]):
-    if isinstance(date, str):
-        try:
-            dt = datetime.fromisoformat(date)
-        except Exception as e:
-            print(e)
-            dt = parse_plurk_time(date)
-    else:
-        dt = date
-    return dt.strftime('%Y-%m-%D')
+PLURK_DATETIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
 
 
 def parse_plurk_time(date_string: str):
@@ -21,7 +11,13 @@ def parse_plurk_time(date_string: str):
 
     The utility function exists because Plurk API does not use ISO8601 datetime format.
     """
-    return datetime.strptime(date_string, '%a, %d %b %Y %H:%M:%S GMT')
+    return datetime.strptime(date_string, PLURK_DATETIME_FORMAT)
+
+
+def format_as_plurk_time(dt: datetime):
+    """Return a date string in the format the Plurk API's responses use.
+    """
+    return dt.strftime(PLURK_DATETIME_FORMAT)
 
 
 def parse_time_validator(field: str):
