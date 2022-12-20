@@ -1,3 +1,19 @@
+"""Quickstart example
+
+Prerequiste:
+1. Create a Plurk app at https://www.plurk.com/PlurkApp/create)
+2. 
+
+What this example script does:
+1. Perform the OAuth 1.0 flow
+    a. Get request token
+    b. Get authorization URL
+    c. Ask user to open authorization URL with browser, and take auth code as input
+    d. Fetch user's access token with the request token and auth code
+
+2. Call /APP/Users/me to get the current user's user data, and print some fields for demonstration
+"""
+
 from plurk import Client
 
 APP_KEY = '<your-plurk-app-key>'
