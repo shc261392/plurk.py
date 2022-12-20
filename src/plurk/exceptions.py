@@ -16,6 +16,11 @@ class ServerError(Exception):
     """API response with 50x status code"""
 
 
+class ResponseValidationError(Exception):
+    """API Response is not in the expected format
+    """
+
+
 class UnknownError(Exception):
     """API response with another non-succesfful status code"""
 
