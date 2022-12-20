@@ -1,9 +1,9 @@
 from datetime import datetime
-from enum import Enum
 from typing import Any, List, Optional
 
 from pydantic import BaseModel
 
+from plurk.enums import AvatarSize, Privacy, Relationship
 from plurk.models.base import ResponseBase
 from plurk.utils import parse_time_validator
 
@@ -19,34 +19,12 @@ class Anniversary(BaseModel):
     days: int
 
 
-class Relationship(str, Enum):
-    NOT_SAYING = 'not_saying'
-    SINGLE = 'single'
-    MARRIED = 'married'
-    DIVORCED = 'divorced'
-    ENGAGED = 'engaged'
-    IN_RELATIONSHIP = 'in_relationship'
-    COMPLICATED = 'complicated'
-    WIDOWED = 'widowed'
-    UNSTABLE_RELATIONSHIP = 'unstable_relationship'
-    OPEN_RELATIONSHIP = 'open_relationship'
-
-
-class AvatarSize(str, Enum):
-    SMALL = 'small'
-    MEDIUM = 'medium'
-    BIG = 'big'
-
-
-class Privacy(str, Enum):
-    WORLD = 'world'
-    ONLY_FRIENDS = 'only_friends'
-
-
 class BaseUserData(ResponseBase):
     """Base class for user data
     """
     id: int
+    """A unique user id.
+    """
     status: str
     has_profile_image: int
     timeline_privacy: int
@@ -54,7 +32,13 @@ class BaseUserData(ResponseBase):
     display_name: Optional[str]
     date_of_birth: Optional[datetime]
     avatar: int
-    gender: int  # 1 is male, 0 is female, 2 is not stating/other.
+    gender: int
+    """Gender of the user.
+
+    `0`: female
+    `1`: male
+    `2`: not stating or other
+    """
     karma: float
     premium: bool
     verified_account: bool
@@ -65,8 +49,21 @@ class BaseUserData(ResponseBase):
     full_name: str
     location: str
     timezone: str
-    phone_verified: Optional[Any]  # not sure; only saw None in real data
-    bday_privacy: int  # 0: hide birthday, 1: show birth date but not birth year, 2: show all
+    phone_verified: Optional[int]
+    """Phone verification status.
+
+    `None`: phone number is not set.
+    `0`: phone number is set but not verified
+    `1`: phone verified.
+    """
+    # not sure; only saw None in real data
+    bday_privacy: int
+    """The privacy setting for displaying birthday.
+
+    `0`: hide birthday
+    `1`: show birth date but not birth year
+    `2`: show all
+    """
     pinned_plurk_id: int
     background_id: int
     show_ads: bool
@@ -141,7 +138,7 @@ class UserData(BaseUserData):
     fans_count: int
     join_date: datetime
     hide_plurks_before: Optional[Any]  # not sure; only saw None in real data
-    privacy: str
+    privacy: Privacy
     accept_private_plurk_from: str
     post_anonymous_plurk: bool
     badges: List[str]
