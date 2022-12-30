@@ -1,9 +1,20 @@
 from datetime import datetime
+from typing import Any, Dict, List, Union
 
 from pydantic import BaseModel, ValidationError
 
 from plurk.exceptions import ResponseValidationError
 from plurk.utils import format_as_plurk_time
+
+
+def format_datetime_deep(obj: Union[Dict, List, int, str, bool, datetime, None]):
+    if isinstance(obj, datetime):
+        return format_as_plurk_time(obj)
+    if isinstance(obj, list):
+        return [format_datetime_deep(item) for item in obj]
+    if isinstance(obj, dict):
+        return {k: format_datetime_deep(v) for k, v in obj.items()}
+    return obj
 
 
 class ResponseBase(BaseModel):
@@ -13,12 +24,8 @@ class ResponseBase(BaseModel):
         except ValidationError as exc:
             raise ResponseValidationError(self.__class__.__name__) from exc
 
-    def dict_original(self):
+    def dict_original(self) -> Dict[str, Any]:
         """Return a dict representation of the UserData while restoring the original
         data like Plurk API date string format.
         """
-        ret = self.dict()
-        for k, v in ret.items():
-            if isinstance(v, datetime):
-                ret[k] = format_as_plurk_time(v)
-        return ret
+        return format_datetime_deep(self.dict())  # type: ignore

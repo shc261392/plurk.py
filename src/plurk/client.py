@@ -107,3 +107,7 @@ class Client(BaseClient):
     @property
     def users(self):
         return apis.Users(self)
+
+    @property
+    def profile(self):
+        return apis.Profile(self)

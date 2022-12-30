@@ -45,10 +45,10 @@ class BaseUserData(ResponseBase):
     dateformat: int
     default_lang: str
     friend_list_privacy: str
-    name_color: str
+    name_color: Optional[str]
     full_name: str
     location: str
-    timezone: str
+    timezone: Optional[str]
     phone_verified: Optional[int]
     """Phone verification status.
 
@@ -64,7 +64,7 @@ class BaseUserData(ResponseBase):
     `1`: show birth date but not birth year
     `2`: show all
     """
-    pinned_plurk_id: int
+    pinned_plurk_id: Optional[int]
     background_id: int
     show_ads: bool
 
@@ -159,4 +159,9 @@ class UserData(BaseUserData):
 
 class UpdateAvatarResponse(BaseUserData):
     """Data returned by `/APP/Users/updateAvatar` endpoint
+    """
+
+
+class PublicUserData(BaseUserData):
+    """Public user data
     """

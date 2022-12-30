@@ -1,15 +1,19 @@
+
 from datetime import datetime
+from typing import Optional
 
 from pydantic import validator
 
 PLURK_DATETIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
 
 
-def parse_plurk_time(date_string: str):
+def parse_plurk_time(date_string: Optional[str]):
     """Parse the date string used in Plurk API's responses into datetime object.
 
     The utility function exists because Plurk API does not use ISO8601 datetime format.
     """
+    if not date_string:
+        return None
     return datetime.strptime(date_string, PLURK_DATETIME_FORMAT)
 
 
