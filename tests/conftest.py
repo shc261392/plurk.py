@@ -4,7 +4,8 @@ import pytest
 from pydantic_factories import ModelFactory, Use
 
 from plurk.models import (KarmaStats, OwnProfile, Plurk, PublicProfile,
-                          PublicUserData, UpdateAvatarResponse, UserData)
+                          PublicUserData, UpdateAvatarResponse, UserChannel,
+                          UserData)
 from plurk.utils import format_as_plurk_time
 
 
@@ -45,6 +46,10 @@ class UpdateAvatarResponseFactory(ModelFactory):
     date_of_birth = generate_date_string
 
 
+class UserChannelFactory(ModelFactory):
+    __model__ = UserChannel
+
+
 class UserDataFactory(ModelFactory):
     __model__ = UserData
     __auto_register__ = True
@@ -71,6 +76,11 @@ def public_profile_fixture(request) -> PublicProfile:
 @pytest.fixture()
 def update_avatar_response_fixture(request) -> UpdateAvatarResponse:
     return UpdateAvatarResponseFactory.build()
+
+
+@pytest.fixture()
+def user_channel_fixture(request) -> UserChannel:
+    return UserChannelFactory.build()
 
 
 @pytest.fixture()

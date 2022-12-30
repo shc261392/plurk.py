@@ -1,6 +1,7 @@
 from .karma_stats import KarmaStats
 from .plurk import Plurk
 from .profile import OwnProfile, PublicProfile
+from .user_channel import UserChannel
 from .user_data import PublicUserData, UpdateAvatarResponse, UserData
 
 __all__ = [
@@ -9,6 +10,7 @@ __all__ = [
     'Plurk',
     'PublicProfile',
     'PublicUserData',
+    'UserChannel',
     'UserData',
     'UpdateAvatarResponse',
 ]
