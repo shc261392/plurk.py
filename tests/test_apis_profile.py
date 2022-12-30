@@ -1,6 +1,7 @@
 from pytest_httpx import HTTPXMock
 
 from plurk import Client
+from plurk.models import OwnProfile, PublicProfile
 
 
 def test_get_own_profile(httpx_mock: HTTPXMock, own_profile_fixture):
@@ -11,6 +12,7 @@ def test_get_own_profile(httpx_mock: HTTPXMock, own_profile_fixture):
     )
     with Client('app_key', 'app_secret') as client:
         own_profile = client.profile.get_own_profile()
+    assert isinstance(own_profile, OwnProfile)
     assert own_profile.dict_original() == resp_json
 
 
@@ -22,4 +24,5 @@ def test_get_public_profile(httpx_mock: HTTPXMock, public_profile_fixture):
     )
     with Client('app_key', 'app_secret') as client:
         public_profile = client.profile.get_public_profile()
+    assert isinstance(public_profile, PublicProfile)
     assert public_profile.dict_original() == resp_json

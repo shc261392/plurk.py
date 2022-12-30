@@ -5,6 +5,7 @@ from pytest_httpx import HTTPXMock
 from pytest_mock import MockerFixture
 
 from plurk import Client
+from plurk.models import KarmaStats, UpdateAvatarResponse, UserData
 from plurk.utils import parse_plurk_time
 
 
@@ -16,11 +17,8 @@ def test_me(httpx_mock: HTTPXMock, user_data_fixture):
     )
     with Client('app_key', 'app_secret') as client:
         user_data = client.users.me()
-    for k, v in user_data.dict().items():
-        if isinstance(v, datetime):
-            assert v == parse_plurk_time(resp_json[k])
-        else:
-            assert v == resp_json[k]
+    assert isinstance(user_data, UserData)
+    assert user_data.dict_original() == resp_json
 
 
 def test_update_avatar(httpx_mock: HTTPXMock, mocker: MockerFixture, update_avatar_response_fixture):
@@ -31,12 +29,9 @@ def test_update_avatar(httpx_mock: HTTPXMock, mocker: MockerFixture, update_avat
     )
     mocker.patch('builtins.open', mocker.mock_open(read_data=b''))
     with Client('app_key', 'app_secret') as client:
-        user_data = client.users.update_avatar('')
-    for k, v in user_data.dict().items():
-        if isinstance(v, datetime):
-            assert v == parse_plurk_time(resp_json[k])
-        else:
-            assert v == resp_json[k]
+        update_avatar_resp = client.users.update_avatar('')
+    assert isinstance(update_avatar_resp, UpdateAvatarResponse)
+    assert update_avatar_resp.dict_original() == resp_json
 
 
 def test_get_karma_stats(httpx_mock: HTTPXMock, karma_stats_fixture):
@@ -47,4 +42,5 @@ def test_get_karma_stats(httpx_mock: HTTPXMock, karma_stats_fixture):
     )
     with Client('app_key', 'app_secret') as client:
         karma_stats = client.users.get_karma_stats()
-        assert karma_stats.dict() == resp_json
+    assert isinstance(karma_stats, KarmaStats)
+    assert karma_stats.dict_original() == resp_json
