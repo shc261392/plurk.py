@@ -1,7 +1,14 @@
 # plurk.py
-An unofficial library of interacting with Plurk API 2.0 for Python 3.7+.
+An unofficial library of interacting with Plurk API 2.0 for Python 3.8+.
 
 ![main](https://github.com/shc261392/plurk.py/actions/workflows/ci.yml/badge.svg?branch=main)
+
+## Requirement
+
+- Python 3.8+
+
+Tests will fail when using Python 3.7 since the package used in testing requires Python 3.8+.
+The package might still works for Python 3.7, though it is not recommended to use the package with Python 3.7
 
 ## Installation
 
