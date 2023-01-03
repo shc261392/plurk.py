@@ -46,27 +46,6 @@ class BaseUserData(ResponseBase):
     default_lang: str
     friend_list_privacy: str
     name_color: Optional[str]
-    full_name: str
-    location: str
-    timezone: Optional[str]
-    phone_verified: Optional[int]
-    """Phone verification status.
-
-    `None`: phone number is not set.
-    `0`: phone number is set but not verified
-    `1`: phone verified.
-    """
-    # not sure; only saw None in real data
-    bday_privacy: int
-    """The privacy setting for displaying birthday.
-
-    `0`: hide birthday
-    `1`: show birth date but not birth year
-    `2`: show all
-    """
-    pinned_plurk_id: Optional[int]
-    background_id: int
-    show_ads: bool
 
     _parse_date_of_birth = parse_time_validator('date_of_birth')
 
@@ -120,7 +99,31 @@ class BaseUserData(ResponseBase):
         )
 
 
-class UserData(BaseUserData):
+class PublicUserData(BaseUserData):
+    full_name: str
+    location: str
+    timezone: Optional[str]
+    phone_verified: Optional[int]
+    """Phone verification status.
+
+    `None`: phone number is not set.
+    `0`: phone number is set but not verified
+    `1`: phone verified.
+    """
+    # not sure; only saw None in real data
+    bday_privacy: int
+    """The privacy setting for displaying birthday.
+
+    `0`: hide birthday
+    `1`: show birth date but not birth year
+    `2`: show all
+    """
+    pinned_plurk_id: Optional[int]
+    background_id: int
+    show_ads: bool
+
+
+class UserData(PublicUserData):
     """Data returned by `/APP/Users/me` endpoint
     """
     plurks_count: int
@@ -157,11 +160,11 @@ class UserData(BaseUserData):
         use_enum_values = True
 
 
-class UpdateAvatarResponse(BaseUserData):
+class UpdateAvatarResponse(PublicUserData):
     """Data returned by `/APP/Users/updateAvatar` endpoint
     """
 
 
-class PublicUserData(BaseUserData):
-    """Public user data
+class SimpleUserData(BaseUserData):
+    """User data in NewPlurk or NewReponse retrieved in user channel data
     """
