@@ -31,7 +31,7 @@ class BaseUserData(RespBase):
     nick_name: str
     display_name: Optional[str]
     date_of_birth: Optional[datetime]
-    avatar: int
+    avatar: Optional[int]
     gender: int
     """Gender of the user.
 
@@ -74,6 +74,9 @@ class BaseUserData(RespBase):
         The actual data returned as for now already includes avatar URLs, so there's no need to
         construct URLs now.
         """
+        if not self.avatar:
+            raise ValueError(f'user {self.id} does not have an avatar')
+
         url_template = '{base_url}/{user_id}-{size}{avatar}.{ext}'
 
         if self.has_profile_image == 1:

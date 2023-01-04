@@ -3,7 +3,7 @@ from .plurk import Plurk, NewPlurk
 from .profile import OwnProfile, PublicProfile
 from .response import NewResponse
 from .user_channel import ChannelData, UserChannel
-from .user_data import PublicUserData, UpdateAvatarResponse, UserData
+from .user_data import PublicUserData, UpdateAvatarResp, UserData
 
 __all__ = [
     'ChannelData',
@@ -16,5 +16,5 @@ __all__ = [
     'PublicUserData',
     'UserChannel',
     'UserData',
-    'UpdateAvatarResponse',
+    'UpdateAvatarResp',
 ]
