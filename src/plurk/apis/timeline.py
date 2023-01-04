@@ -61,7 +61,7 @@ class Timeline(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Timeline/getPlurks'
         if isinstance(offset, datetime):
-            offset = offset.strftime('%Y-%m-%DT%H:%M:%S')
+            offset = offset.strftime('%Y-%m-%dT%H:%M:%S')
         params = build_params(
             offset=offset,
             limit=limit,
@@ -100,7 +100,7 @@ class Timeline(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Timeline/getUnreadPlurks'
         if isinstance(offset, datetime):
-            offset = offset.strftime('%Y-%m-%DT%H:%M:%S')
+            offset = offset.strftime('%Y-%m-%dT%H:%M:%S')
         params = build_params(
             offset=offset,
             limit=limit,
@@ -141,7 +141,7 @@ class Timeline(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Timeline/getPublicPlurks'
         if isinstance(offset, datetime):
-            offset = offset.strftime('%Y-%m-%DT%H:%M:%S')
+            offset = offset.strftime('%Y-%m-%dT%H:%M:%S')
         params = build_params(
             user_id=user_id,
             offset=offset,
@@ -200,7 +200,7 @@ class Timeline(BaseApi):
         validate_resp(resp)
         return TimelineActionResp(**resp.json())
 
-    def plurk_edit(self, plurk_id: int, content: str):
+    def plurk_edit(self, plurk_id: int, content: str, plurk_type: int):
         """"Edit an existing plurk.
 
         Args:
@@ -208,7 +208,7 @@ class Timeline(BaseApi):
             content: the new content of the plurk.
         """
         endpoint = f'{self.client.base_url}/APP/Timeline/plurkEdit'
-        payload = build_params(plurk_id=plurk_id, content=content)
+        payload = build_params(plurk_id=plurk_id, content=content, plurk_type=plurk_type)
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
         return Plurk(**resp.json())
