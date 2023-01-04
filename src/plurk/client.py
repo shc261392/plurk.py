@@ -4,7 +4,7 @@ from typing import Dict, TypeVar
 from authlib.integrations.httpx_client import OAuth1Client
 
 from plurk import apis, oauth
-from plurk.exceptions import validate_response
+from plurk.exceptions import validate_resp
 
 T = TypeVar('T')
 
@@ -83,25 +83,25 @@ class Client(BaseClient):
     def checkToken(self):
         endpoint = f'{self.base_url}/APP/checkToken'
         resp = self.http_client.post(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return resp.json()
 
     def expireToken(self):
         endpoint = f'{self.base_url}/APP/expireToken'
         resp = self.http_client.post(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return resp.json()
 
     def checkTime(self):
         endpoint = f'{self.base_url}/APP/checkTime'
         resp = self.http_client.post(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return resp.json()
 
     def echo(self, data: Dict[str, T]) -> Dict[str, T]:
         endpoint = f'{self.base_url}/APP/echo'
         resp = self.http_client.post(endpoint, data=data)
-        validate_response(resp)
+        validate_resp(resp)
         return resp.json()
 
     @property

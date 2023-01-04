@@ -1,10 +1,10 @@
 from datetime import datetime
 from typing import List
 
-from plurk.models.base import ResponseBase
+from plurk.models.base import RespBase
 
 
-class KarmaStats(ResponseBase):
+class KarmaStats(RespBase):
     """Data returned by `/APP/Users/getKarmaStats` endpoint
     """
     current_karma: float

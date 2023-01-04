@@ -2,7 +2,7 @@ import re
 from typing import Optional
 
 from plurk.apis.base import BaseApi
-from plurk.exceptions import validate_response
+from plurk.exceptions import validate_resp
 from plurk.models import ChannelData, UserChannel
 from plurk.utils import read_jsonp
 
@@ -30,7 +30,7 @@ class Realtime(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Realtime/getUserChannel'
         resp = self.client.http_client.get(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return UserChannel(**resp.json())
 
     def get_channel_response(self, comet_channel_url: str, timeout: int = 120, new_offset: Optional[int] = None):
@@ -44,6 +44,6 @@ class Realtime(BaseApi):
         """
         endpoint = update_new_offset(comet_channel_url, new_offset)
         resp = self.client.http_client.get(endpoint, timeout=timeout)
-        validate_response(resp)
+        validate_resp(resp)
         jsonp_resp = read_jsonp(resp.text)
         return ChannelData(**jsonp_resp)

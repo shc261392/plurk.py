@@ -1,12 +1,12 @@
 from typing import Dict, List
 
 from plurk.enums import Privacy
-from plurk.models.base import ResponseBase
+from plurk.models.base import RespBase
 from plurk.models.plurk import Plurk
 from plurk.models.user_data import PublicUserData, UserData
 
 
-class ProfileBase(ResponseBase):
+class ProfileBase(RespBase):
     """Base class for profile
     """
     fans_count: int

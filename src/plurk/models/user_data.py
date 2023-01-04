@@ -4,7 +4,7 @@ from typing import Any, List, Optional
 from pydantic import BaseModel
 
 from plurk.enums import AvatarSize, Privacy, Relationship
-from plurk.models.base import ResponseBase
+from plurk.models.base import RespBase
 from plurk.utils import parse_time_validator
 
 
@@ -19,7 +19,7 @@ class Anniversary(BaseModel):
     days: int
 
 
-class BaseUserData(ResponseBase):
+class BaseUserData(RespBase):
     """Base class for user data
     """
     id: int
@@ -160,7 +160,7 @@ class UserData(PublicUserData):
         use_enum_values = True
 
 
-class UpdateAvatarResponse(PublicUserData):
+class UpdateAvatarResp(PublicUserData):
     """Data returned by `/APP/Users/updateAvatar` endpoint
     """
 

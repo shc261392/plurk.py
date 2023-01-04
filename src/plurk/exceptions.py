@@ -16,7 +16,7 @@ class ServerError(Exception):
     """API response with 50x status code"""
 
 
-class ResponseValidationError(Exception):
+class RespValidationError(Exception):
     """API Response is not in the expected format
     """
 
@@ -47,7 +47,7 @@ def extract_error_message(r: Response):
     return msg
 
 
-def validate_response(r: Response):
+def validate_resp(r: Response):
     try:
         r.raise_for_status()
     except HTTPStatusError as exc:

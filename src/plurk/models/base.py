@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Union
 
 from pydantic import BaseModel, ValidationError
 
-from plurk.exceptions import ResponseValidationError
+from plurk.exceptions import RespValidationError
 from plurk.utils import format_as_plurk_time
 
 
@@ -17,12 +17,12 @@ def format_datetime_deep(obj: Union[Dict, List, int, str, bool, datetime, None])
     return obj
 
 
-class ResponseBase(BaseModel):
+class RespBase(BaseModel):
     def __init__(self, *args, **kwargs):
         try:
             super().__init__(*args, **kwargs)
         except ValidationError as exc:
-            raise ResponseValidationError(self.__class__.__name__) from exc
+            raise RespValidationError(self.__class__.__name__) from exc
 
     def dict_original(self) -> Dict[str, Any]:
         """Return a dict representation of the UserData while restoring the original

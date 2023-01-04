@@ -2,9 +2,9 @@ from datetime import datetime
 from typing import BinaryIO, Optional, Union
 
 from plurk.apis.base import BaseApi
-from plurk.exceptions import validate_response
+from plurk.exceptions import validate_resp
 from plurk.models.karma_stats import KarmaStats
-from plurk.models.user_data import Privacy, UpdateAvatarResponse, UserData
+from plurk.models.user_data import Privacy, UpdateAvatarResp, UserData
 
 
 class Users(BaseApi):
@@ -13,7 +13,7 @@ class Users(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Users/me'
         resp = self.client.http_client.get(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return UserData(**resp.json())
 
     def update(
@@ -38,7 +38,7 @@ class Users(BaseApi):
         }
         print(f'payload {payload}')
         resp = self.client.http_client.post(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return UserData(**resp.json())
 
     def update_avatar(self, profile_image: Union[str, BinaryIO]):
@@ -61,8 +61,8 @@ class Users(BaseApi):
         # filename must be included in form-data, otherwise the request will fail.
         # arbitrary filename works, no need to have correct file ext.
 
-        validate_response(resp)
-        return UpdateAvatarResponse(**resp.json())
+        validate_resp(resp)
+        return UpdateAvatarResp(**resp.json())
 
     def get_karma_stats(self):
         """Returns info about current user's karma, including current karma, karma growth,
@@ -70,5 +70,5 @@ class Users(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Users/getKarmaStats'
         resp = self.client.http_client.get(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return KarmaStats(**resp.json())

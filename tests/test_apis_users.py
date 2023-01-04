@@ -1,12 +1,8 @@
-from datetime import datetime
-
-from httpx._multipart import MultipartStream
 from pytest_httpx import HTTPXMock
 from pytest_mock import MockerFixture
 
 from plurk import Client
-from plurk.models import KarmaStats, UpdateAvatarResponse, UserData
-from plurk.utils import parse_plurk_time
+from plurk.models import KarmaStats, UpdateAvatarResp, UserData
 
 
 def test_me(httpx_mock: HTTPXMock, user_data_fixture):
@@ -30,7 +26,7 @@ def test_update_avatar(httpx_mock: HTTPXMock, mocker: MockerFixture, update_avat
     mocker.patch('builtins.open', mocker.mock_open(read_data=b''))
     with Client('app_key', 'app_secret') as client:
         update_avatar_resp = client.users.update_avatar('')
-    assert isinstance(update_avatar_resp, UpdateAvatarResponse)
+    assert isinstance(update_avatar_resp, UpdateAvatarResp)
     assert update_avatar_resp.dict_original() == resp_json
 
 

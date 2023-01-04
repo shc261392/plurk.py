@@ -2,11 +2,11 @@ from datetime import datetime
 from typing import Any, List, Literal, Optional
 
 from plurk.enums import ChannelDataEntryType
-from plurk.models.base import ResponseBase
+from plurk.models.base import RespBase
 from plurk.utils import parse_time_validator
 
 
-class Plurk(ResponseBase):
+class Plurk(RespBase):
     """Data of a plurk.
 
     A plurk's data returned from different endpoint varies.

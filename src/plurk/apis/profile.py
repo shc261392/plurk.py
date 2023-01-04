@@ -1,5 +1,5 @@
 from plurk.apis.base import BaseApi
-from plurk.exceptions import validate_response
+from plurk.exceptions import validate_resp
 from plurk.models.profile import OwnProfile, PublicProfile
 
 
@@ -11,7 +11,7 @@ class Profile(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Profile/getOwnProfile'
         resp = self.client.http_client.get(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return OwnProfile(**resp.json())
 
     def get_public_profile(self):
@@ -23,5 +23,5 @@ class Profile(BaseApi):
         """
         endpoint = f'{self.client.base_url}/APP/Users/getPublicProfile'
         resp = self.client.http_client.get(endpoint)
-        validate_response(resp)
+        validate_resp(resp)
         return PublicProfile(**resp.json())
