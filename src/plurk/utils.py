@@ -1,4 +1,5 @@
 
+from enum import Enum
 import json
 import re
 from datetime import datetime
@@ -7,6 +8,23 @@ from typing import Optional
 from pydantic import validator
 
 PLURK_DATETIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
+
+
+def build_params(**kwargs):
+    """Return a dict built from non-null kwargs.
+
+    If a kwarg is an Enum, the value of enum will be used for building the params.
+    Used for building query params or request body.
+    """
+    ret = {}
+    for k, v in kwargs.items():
+        if v is None:
+            continue
+        if isinstance(v, Enum):
+            ret[k] = v.value
+        else:
+            ret[k] = v
+    return ret
 
 
 def format_as_plurk_time(dt: datetime):

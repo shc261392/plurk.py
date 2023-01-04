@@ -117,5 +117,9 @@ class Client(BaseClient):
         return apis.Realtime(self)
 
     @property
+    def timeline(self):
+        return apis.Timeline(self)
+
+    @property
     def helpers(self):
         return apis.Helper(self)
