@@ -159,7 +159,7 @@ class Timeline(BaseApi):
     def plurk_add(
                 self,
                 content: str,
-                qualifier: Qualifier,
+                qualifier: Qualifier = Qualifier.EMPTY,
                 limited_to: Optional[List[int]] = None,
                 no_comments: Optional[int] = None,
                 lang: Optional[Language] = None,
@@ -323,7 +323,7 @@ class Timeline(BaseApi):
         print(resp.json())
         return UploadPictureResp(**resp.json())
 
-    def report_abuse(self, plurk_id: str, category: AbuseCategory):
+    def report_abuse(self, plurk_id: int, category: AbuseCategory):
         """Report a plurk as abuse.
         """
         endpoint = f'{self.client.base_url}/APP/Timeline/reportAbuse'

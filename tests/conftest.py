@@ -103,6 +103,11 @@ def own_profile_fixture(request) -> OwnProfile:
 
 
 @pytest.fixture()
+def plurk_fixture(request) -> Plurk:
+    return PlurkFactory.build()
+
+
+@pytest.fixture()
 def public_profile_fixture(request) -> PublicProfile:
     return PublicProfileFactory.build()
 
