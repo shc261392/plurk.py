@@ -2,9 +2,10 @@ from datetime import datetime
 from typing import BinaryIO, List, Optional, Union
 
 from plurk.apis.base import BaseApi
-from plurk.enums import Language, Qualifier, AbuseCategory
+from plurk.enums import AbuseCategory, Language, Qualifier
 from plurk.exceptions import validate_resp
-from plurk.models import Plurk, GetPlurkResp, GetPlurksResp, TimelineActionResp, UploadPictureResp
+from plurk.models import (GetPlurkResp, GetPlurksResp, Plurk,
+                          TimelineActionResp, UploadPictureResp)
 from plurk.utils import build_params
 
 
@@ -200,7 +201,7 @@ class Timeline(BaseApi):
         validate_resp(resp)
         return TimelineActionResp(**resp.json())
 
-    def plurk_edit(self, plurk_id: int, content: str, plurk_type: int):
+    def plurk_edit(self, plurk_id: int, content: str, limited_to: Optional[List[int]] = None):
         """"Edit an existing plurk.
 
         Args:
@@ -208,7 +209,7 @@ class Timeline(BaseApi):
             content: the new content of the plurk.
         """
         endpoint = f'{self.client.base_url}/APP/Timeline/plurkEdit'
-        payload = build_params(plurk_id=plurk_id, content=content, plurk_type=plurk_type)
+        payload = build_params(plurk_id=plurk_id, content=content, limited_to=str(limited_to))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
         return Plurk(**resp.json())
