@@ -17,8 +17,8 @@ def test_me(httpx_mock: HTTPXMock, user_data_fixture):
     assert user_data.dict_original() == resp_json
 
 
-def test_update_avatar(httpx_mock: HTTPXMock, mocker: MockerFixture, update_avatar_response_fixture):
-    resp_json = update_avatar_response_fixture.dict_original()
+def test_update_avatar(httpx_mock: HTTPXMock, mocker: MockerFixture, update_avatar_resp_fixture):
+    resp_json = update_avatar_resp_fixture.dict_original()
     httpx_mock.add_response(
         status_code=200,
         json=resp_json,

@@ -113,7 +113,7 @@ def timeline_action_resp_fixture(request) -> TimelineActionResp:
 
 
 @pytest.fixture()
-def update_avatar_response_fixture(request) -> UpdateAvatarResp:
+def update_avatar_resp_fixture(request) -> UpdateAvatarResp:
     return UpdateAvatarRespFactory.build()
 
 
