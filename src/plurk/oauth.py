@@ -19,13 +19,13 @@ def get_request_token(client: OAuth1Client, request_token_url: str):
     return client.fetch_request_token(request_token_url)
 
 
-def get_auth_url(client: OAuth1Client, authenticate_url: str, request_token: Dict):
+def get_auth_url(client: OAuth1Client, authenticate_url: str, request_token: Dict[str, str]):
     return client.create_authorization_url(authenticate_url, request_token['oauth_token'])
 
 
 def fetch_access_token(
             client_id: str, client_secret: str, access_token_url: str,
-            request_token: Dict, oauth_verifier: str,
+            request_token: Dict[str, str], oauth_verifier: str,
         ):
     with OAuth1Client(
         client_id,
