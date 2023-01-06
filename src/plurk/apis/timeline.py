@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import BinaryIO, List, Optional, Union
 
 from plurk.apis.base import BaseApi
-from plurk.enums import AbuseCategory, Language, Qualifier
+from plurk.enums import AbuseCategory, Filter, Language, Qualifier
 from plurk.exceptions import validate_resp
 from plurk.models import (GetPlurkResp, GetPlurksResp, Plurk,
                           TimelineActionResp, UploadPictureResp)
@@ -40,7 +40,7 @@ class Timeline(BaseApi):
                 self,
                 offset: Optional[Union[str, datetime]] = None,
                 limit: int = 20,
-                filter: Optional[str] = None,  # pylint: disable=redefined-builtin
+                filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
                 favorers_detail=False,
                 limited_detail=False,
                 replurkers_detail=False,
@@ -79,7 +79,7 @@ class Timeline(BaseApi):
                 self,
                 offset: Optional[Union[str, datetime]] = None,
                 limit: int = 20,
-                filter: Optional[str] = None,  # pylint: disable=redefined-builtin
+                filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
                 favorers_detail=False,
                 limited_detail=False,
                 replurkers_detail=False,
@@ -119,7 +119,7 @@ class Timeline(BaseApi):
                 user_id: Union[int, str],
                 offset: Optional[Union[str, datetime]] = None,
                 limit: int = 20,
-                filter: Optional[str] = None,  # pylint: disable=redefined-builtin
+                filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
                 favorers_detail=False,
                 limited_detail=False,
                 replurkers_detail=False,
