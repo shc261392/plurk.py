@@ -13,7 +13,7 @@ class Timeline(BaseApi):
     def get_plurk(self, plurk_id: int, favorers_detail=False, limited_detail=False, replurkers_detail=False):
         """Return a plurk by its plurk_id.
 
-        Note: the response schema described in offical API doc is incorrect. See `TimelinePlurk` model
+        Note: the response schema described in offical API doc is incorrect. See `GetPlurkResp` model
         for the actual data schema.
 
         Args:
