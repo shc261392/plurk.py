@@ -1,4 +1,4 @@
-from typing import List, Optional, Union
+from typing import List, Union
 from typing_extensions import Annotated
 
 from pydantic import Field
@@ -11,11 +11,21 @@ from plurk.models.response import NewResponse
 ChannelDataEntry = Annotated[Union[NewPlurk, NewResponse], Field(discriminator='type')]
 
 
-class ChannelData(RespBase):
-    """Data returned from comet channel URL
+class BaseChannelResp(RespBase):
+    """Resp returned from comet channel URL
     """
     new_offset: int
-    data: Optional[List[ChannelDataEntry]]
+
+
+class NoDataChannelResp(BaseChannelResp):
+    """Resp returned from comet channel URL that indicates no updates
+    """
+
+
+class ChannelResp(BaseChannelResp):
+    """Resp returned from comet channel URL that contains at least one data entry
+    """
+    data: List[ChannelDataEntry]
 
 
 class UserChannel(RespBase):

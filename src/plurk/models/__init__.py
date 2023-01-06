@@ -4,12 +4,13 @@ from .profile import OwnProfile, PublicProfile
 from .response import NewResponse
 from .timeline import (GetPlurkResp, GetPlurksResp, TimelineActionResp,
                        UploadPictureResp)
-from .user_channel import ChannelData, UserChannel
+from .user_channel import ChannelResp, NoDataChannelResp, UserChannel
 from .user_data import (PublicUserData, SimpleUserData, UpdateAvatarResp,
                         UserData)
 
 __all__ = [
-    'ChannelData',
+    'ChannelResp',
+    'NoDataChannelResp',
     'KarmaStats',
     'NewPlurk',
     'NewResponse',

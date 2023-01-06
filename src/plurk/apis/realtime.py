@@ -2,8 +2,8 @@ import re
 from typing import Optional
 
 from plurk.apis.base import BaseApi
-from plurk.exceptions import validate_resp
-from plurk.models import ChannelData, UserChannel
+from plurk.exceptions import validate_resp, RespValidationError
+from plurk.models import ChannelResp, NoDataChannelResp, UserChannel
 from plurk.utils import read_jsonp
 
 
@@ -46,4 +46,7 @@ class Realtime(BaseApi):
         resp = self.client.http_client.get(endpoint, timeout=timeout)
         validate_resp(resp)
         jsonp_resp = read_jsonp(resp.text)
-        return ChannelData(**jsonp_resp)
+        try:
+            return ChannelResp(**jsonp_resp)
+        except RespValidationError:
+            return NoDataChannelResp(**jsonp_resp)

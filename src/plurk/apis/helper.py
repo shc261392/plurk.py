@@ -1,11 +1,12 @@
 from plurk.apis.base import BaseApi
+from plurk.models import ChannelResp
 
 
 class Helper(BaseApi):
     """The class represents the collection of helper methods build on
     existing Plurk APIs. It does not represent an API endpoint directly.
     """
-    def subscribe_to_user_channel(self, include_empty_data=False):
+    def subscribe_to_user_channel(self):
         """Returns a generator that yields plurks posted to the user channel.
 
         The method uses the `/APP/Realtime/getUserChannel` endpoint to get the current users channel
@@ -20,5 +21,5 @@ class Helper(BaseApi):
                 user_channel.comet_server, timeout=120, new_offset=new_offset
             )
             new_offset = channel_resp.new_offset
-            if channel_resp.data or include_empty_data:
+            if isinstance(channel_resp, ChannelResp):
                 yield channel_resp
