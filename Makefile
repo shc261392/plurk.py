@@ -23,7 +23,7 @@ $(VENV_DIR)/bin/tox: $(VENV_PYTHON)
 	$(VENV_PYTHON) -m pip install tox
 
 $(VENV_DIR)/bin/$(SPHINXBUILD): $(VENV_PYTHON)
-	$(VENV_PYTHON) -m pip install sphinx
+	$(VENV_PYTHON) -m pip install -r docs-requirements.txt
 
 .PHONY: lint
 lint: $(VENV_DIR)/bin/tox
