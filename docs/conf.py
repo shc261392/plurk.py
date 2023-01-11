@@ -14,7 +14,7 @@ release = 'v0.0.1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['autoapi.extension']
+extensions = ['autoapi.extension', 'myst_parser']
 autoapi_dirs = ['../src']
 autoapi_type = 'python'
 autoapi_template_dir = '_templates/autoapi'
