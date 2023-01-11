@@ -9,9 +9,9 @@ Welcome to plurk.py's documentation!
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
+
    autoapi/index
-
-
+   README <readme_link>
 
 Indices and tables
 ==================
