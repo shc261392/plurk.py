@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 from plurk.models.base import RespBase
 from plurk.models.plurk import Plurk
@@ -21,27 +21,6 @@ class GetPlurksResp(RespBase):
     """
     plurks: List[Plurk]
     plurk_users: Dict[str, SimpleUserData]
-
-
-class TimelineActionResp(RespBase):
-    """Resp of endpoints that performs an action and only return the success status:
-    - `/APP/Timeline/plurkDelete`
-    - `/APP/Timeline/toggleComments`
-    - `/APP/Timeline/mutePlurks`
-    - `/APP/Timeline/unmutePlurks`
-    - `/APP/Timeline/favoritePlurks`
-    - `/APP/Timeline/unfavoritePlurks`
-    - `/APP/Timeline/replurk`
-    - `/APP/Timeline/unreplurk`
-    - `/APP/Timeline/markAsRead`
-    - `/APP/Timeline/reportAbuse`
-    """
-    success_text: Optional[str]
-    success: Optional[bool]
-    results: Optional[Dict[str, Dict]]
-
-    def is_successful(self):
-        return self.success_text or self.success is not False
 
 
 class UploadPictureResp(RespBase):

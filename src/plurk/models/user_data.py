@@ -19,6 +19,12 @@ class Anniversary(BaseModel):
     days: int
 
 
+class Birthday(BaseModel):
+    day: Optional[int]
+    month: Optional[int]
+    year: Optional[int]
+
+
 class BaseUserData(RespBase):
     """Base class for user data
     """
@@ -46,6 +52,8 @@ class BaseUserData(RespBase):
     default_lang: str
     friend_list_privacy: str
     name_color: Optional[str]
+    _version: Optional[str]
+    birthday: Optional[Birthday]
 
     _parse_date_of_birth = parse_time_validator('date_of_birth')
 

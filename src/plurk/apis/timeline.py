@@ -4,8 +4,8 @@ from typing import BinaryIO, List, Optional, Union
 from plurk.apis.base import BaseApi
 from plurk.enums import AbuseCategory, Filter, Language, Qualifier
 from plurk.exceptions import validate_resp
-from plurk.models import (GetPlurkResp, GetPlurksResp, Plurk,
-                          TimelineActionResp, UploadPictureResp)
+from plurk.models import (ActionResp, GetPlurkResp, GetPlurksResp, Plurk,
+                          UploadPictureResp)
 from plurk.utils import build_params
 
 
@@ -199,7 +199,7 @@ class Timeline(BaseApi):
         payload = build_params(plurk_id=plurk_id)
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def plurk_edit(self, plurk_id: int, content: str, limited_to: Optional[List[int]] = None):
         """"Edit an existing plurk.
@@ -226,7 +226,7 @@ class Timeline(BaseApi):
         payload = build_params(plurk_id=plurk_id, no_comments=no_comments)
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def mute_plurks(self, ids: List[int]):
         """Mute plurks.
@@ -237,7 +237,7 @@ class Timeline(BaseApi):
         payload = build_params(ids=str(ids))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def unmute_plurks(self, ids: List[int]):
         """Unmute plurks.
@@ -249,7 +249,7 @@ class Timeline(BaseApi):
         payload = build_params(ids=str(ids))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def favorite_plurks(self, ids: List[int]):
         """Favorite plurks.
@@ -260,7 +260,7 @@ class Timeline(BaseApi):
         payload = build_params(ids=str(ids))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def unfavorite_plurks(self, ids: List[int]):
         """Unfavorite plurks.
@@ -271,7 +271,7 @@ class Timeline(BaseApi):
         payload = build_params(ids=str(ids))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def replurk(self, ids: List[int]):
         """Replurk plurks.
@@ -281,7 +281,7 @@ class Timeline(BaseApi):
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
         print(resp.json())
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def unreplurk(self, ids: List[int]):
         """Unreplurk plurks
@@ -290,7 +290,7 @@ class Timeline(BaseApi):
         payload = build_params(ids=str(ids))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def mark_as_read(self, ids: List[int]):
         """Mark plurks as read.
@@ -302,7 +302,7 @@ class Timeline(BaseApi):
         payload = build_params(ids=str(ids))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())
 
     def upload_picture(self, image: Union[str, BinaryIO]):
         """Upload an image to Plurk site and get a Plurk CDN image link.
@@ -330,4 +330,4 @@ class Timeline(BaseApi):
         payload = build_params(plurk_id=plurk_id, category=category)
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        return TimelineActionResp(**resp.json())
+        return ActionResp(**resp.json())

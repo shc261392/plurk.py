@@ -3,15 +3,20 @@ from datetime import datetime
 import pytest
 from pydantic_factories import ModelFactory
 
-from plurk.models import (GetPlurkResp, GetPlurksResp, KarmaStats, OwnProfile,
-                          Plurk, PublicProfile, PublicUserData, SimpleUserData,
-                          TimelineActionResp, UpdateAvatarResp,
-                          UploadPictureResp, UserChannel, UserData)
+from plurk.models import (ActionResp, GetPlurkResp, GetPlurksResp, KarmaStats,
+                          OwnProfile, Plurk, PublicProfile, PublicUserData,
+                          Response, ResponsesGetResp, SimpleUserData,
+                          UpdateAvatarResp, UploadPictureResp, UserChannel,
+                          UserData)
 from plurk.utils import format_as_plurk_time
 
 
 def generate_date_string():
     return format_as_plurk_time(datetime(1999, 1, 1))
+
+
+class ActionRespFactory(ModelFactory):
+    __model__ = ActionResp
 
 
 class KarmaStatsFactory(ModelFactory):
@@ -49,15 +54,23 @@ class PublicProfileFactory(ModelFactory):
     __model__ = PublicProfile
 
 
+class ResponseFactory(ModelFactory):
+    __model__ = Response
+    __auto_register__ = True
+
+    last_edited = generate_date_string
+    posted = generate_date_string
+
+
+class ResponsesGetRespFactory(ModelFactory):
+    __model__ = ResponsesGetResp
+
+
 class SimpleUserDataFactory(ModelFactory):
     __model__ = SimpleUserData
     __auto_register__ = True
 
     date_of_birth = generate_date_string
-
-
-class TimelineActionRespFactory(ModelFactory):
-    __model__ = TimelineActionResp
 
 
 class UpdateAvatarRespFactory(ModelFactory):
@@ -80,6 +93,11 @@ class UserDataFactory(ModelFactory):
 
     date_of_birth = generate_date_string
     join_date = generate_date_string
+
+
+@pytest.fixture()
+def action_resp_fixture(request) -> ActionResp:
+    return ActionRespFactory.build()
 
 
 @pytest.fixture()
@@ -113,8 +131,13 @@ def public_profile_fixture(request) -> PublicProfile:
 
 
 @pytest.fixture()
-def timeline_action_resp_fixture(request) -> TimelineActionResp:
-    return TimelineActionRespFactory.build()
+def response_fixture(request) -> Response:
+    return ResponseFactory.build()
+
+
+@pytest.fixture()
+def responses_get_resp_fixture(request) -> ResponsesGetResp:
+    return ResponsesGetRespFactory.build()
 
 
 @pytest.fixture()
