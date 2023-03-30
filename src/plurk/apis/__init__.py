@@ -1,3 +1,4 @@
+from .friends_fans import FriendsFans
 from .helper import Helper
 from .profile import Profile
 from .realtime import Realtime
@@ -7,6 +8,7 @@ from .users import Users
 
 __all__ = [
     'Helper',
+    'FriendsFans',
     'Profile',
     'Realtime',
     'Responses',

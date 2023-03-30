@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List
 
 import pytest
 from pydantic_factories import ModelFactory
@@ -128,6 +129,11 @@ def plurk_fixture(request) -> Plurk:
 @pytest.fixture()
 def public_profile_fixture(request) -> PublicProfile:
     return PublicProfileFactory.build()
+
+
+@pytest.fixture()
+def public_user_data_list_fixture(request) -> List[PublicUserData]:
+    return PublicUserDataFactory.batch(10)
 
 
 @pytest.fixture()
