@@ -12,13 +12,13 @@ This is a WIP project. Currently available features:
 - All API endpoints under `/APP/Profile`
 - All API endpoints under `/APP/Realtime`
 - All API endpoints under `/APP/Timeline`
+- API endpoints under `/APP/Responses`
+- API endpoints under `/APP/FriendsFans`
 - All API endpoints listed as OAuth utilities in official API doc.
 - A helper function to subscribe to timeline updates easily. See [example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py) for how to do it.
 
 To-do list:
 
-- API endpoints under `/APP/Responses`
-- API endpoints under `/APP/FriendsFans`
 - API endpoints under `/APP/Alerts`
 - API endpoints `/APP/PlurkSearch`
 - API endpoints `/APP/UserSearch`
@@ -80,14 +80,15 @@ $ make install
 
 `make install` will automatically create a virtualenv in the current folder named `.venv`.
 
+To run test suite:
+
+```shell
+$ make test
+```
+
 ## Dependencies
 
 **plurk.py** depends on the following brilliant works:
 - [Authlib](https://github.com/lepture/authlib) for OAuth. The project uses the [forked version](https://github.com/shc261392/authlib).
-- [httpx](https://github.com/encode/httpx), an solid library for both sync and async HTTP requests
+- [httpx](https://github.com/encode/httpx), a solid library for both sync and async HTTP requests
 - [pydantic](https://github.com/pydantic/pydantic) for building data models with great typing and validation support.
-
-## TODOs
-
-- Complete implementation for other endpoints
-- Add async support
