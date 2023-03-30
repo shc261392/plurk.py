@@ -129,5 +129,9 @@ class Client(BaseClient):
         return apis.FriendsFans(self)
 
     @property
+    def alerts(self):
+        return apis.Alerts(self)
+
+    @property
     def helpers(self):
         return apis.Helper(self)
