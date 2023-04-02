@@ -3,36 +3,18 @@ An unofficial library of interacting with Plurk API 2.0 for Python 3.8+.
 
 ![main](https://github.com/shc261392/plurk.py/actions/workflows/ci.yml/badge.svg?branch=main)
 
-## WIP
-
-This is a WIP project. Currently available features:
+## Features
 
 - Access Plurk API with OAuth easily. See [example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py) for how to do it.
-- All API endpoints under:
-    - `/APP/Users`
-    - `/APP/Profile`
-    - `/APP/Realtime`
-    - `/APP/Timeline`
-    - `/APP/Responses`
-    - `/APP/FriendsFans`
-    - `/APP/Alerts`
-    - `/APP/PlurkSearch`
-    - `/APP/UserSearch`
-    - `/APP/Emoticons`
-    - `/APP/Blocks`
-- All API endpoints listed as OAuth utilities in official API doc.
+- Support all API endpoints listed in the official API doc.
 - A helper function to subscribe to timeline updates easily. See [example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py) for how to do it.
 
-To-do list:
-
-- API endpoints under `/APP/Cliques`
 
 ## Requirement
 
 - Python 3.8+
 
-Tests will fail when using Python 3.7 since the package used in testing requires Python 3.8+.
-The package might still works for Python 3.7, though it is not recommended to use the package with Python 3.7
+Testing dependencies requires Python 3.8+. The package might still works for Python 3.7 though it is not recommended.
 
 ## Installation
 

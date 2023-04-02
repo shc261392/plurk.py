@@ -126,6 +126,11 @@ def get_blocks_resp_fixture(request) -> GetBlocksResp:
 
 
 @pytest.fixture()
+def get_cliques_resp_fixture(request) -> List[str]:
+    return ['all', 'foobar']
+
+
+@pytest.fixture()
 def get_emoticons_fixture(request) -> Dict:
     json_str = """
     {

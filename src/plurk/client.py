@@ -149,5 +149,9 @@ class Client(BaseClient):
         return apis.Blocks(self)
 
     @property
+    def cliques(self):
+        return apis.Cliques(self)
+
+    @property
     def helpers(self):
         return apis.Helper(self)
