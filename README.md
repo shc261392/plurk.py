@@ -5,9 +5,9 @@ An unofficial library of interacting with Plurk API 2.0 for Python 3.8+.
 
 ## Features
 
-- Access Plurk API with OAuth easily. See [example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py) for how to do it.
+- Access Plurk API with OAuth easily. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py))
 - Support all API endpoints listed in the official API doc.
-- A helper function to subscribe to timeline updates easily. See [example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py) for how to do it.
+- A helper function to subscribe to timeline updates easily. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/subscribe_to_updates.py))
 
 
 ## Requirement
