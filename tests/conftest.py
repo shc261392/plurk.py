@@ -5,10 +5,10 @@ import pytest
 from pydantic_factories import ModelFactory
 
 from plurk.models import (ActionResp, GetPlurkResp, GetPlurksResp, KarmaStats,
-                          OwnProfile, Plurk, PublicProfile, PublicUserData,
-                          Response, ResponsesGetResp, SimpleUserData,
-                          UpdateAvatarResp, UploadPictureResp, UserChannel,
-                          UserData)
+                          OwnProfile, Plurk, PlurkSearchResp, PublicProfile,
+                          PublicUserData, Response, ResponsesGetResp,
+                          SimpleUserData, UpdateAvatarResp, UploadPictureResp,
+                          UserChannel, UserData, UserSearchResp)
 from plurk.utils import format_as_plurk_time
 
 
@@ -49,6 +49,10 @@ class PlurkFactory(ModelFactory):
 
     last_edited = generate_date_string
     posted = generate_date_string
+
+
+class PlurkSearchRespFactory(ModelFactory):
+    __model__ = PlurkSearchResp
 
 
 class PublicProfileFactory(ModelFactory):
@@ -96,6 +100,10 @@ class UserDataFactory(ModelFactory):
     join_date = generate_date_string
 
 
+class UserSearchRespFactory(ModelFactory):
+    __model__ = UserSearchResp
+
+
 @pytest.fixture()
 def action_resp_fixture(request) -> ActionResp:
     return ActionRespFactory.build()
@@ -124,6 +132,11 @@ def own_profile_fixture(request) -> OwnProfile:
 @pytest.fixture()
 def plurk_fixture(request) -> Plurk:
     return PlurkFactory.build()
+
+
+@pytest.fixture()
+def plurk_search_resp_fixture(request) -> PlurkSearchResp:
+    return PlurkSearchRespFactory.build()
 
 
 @pytest.fixture()
@@ -164,3 +177,8 @@ def user_channel_fixture(request) -> UserChannel:
 @pytest.fixture()
 def user_data_fixture(request) -> UserData:
     return UserDataFactory.build()
+
+
+@pytest.fixture()
+def user_search_resp_fixture(request) -> UserSearchResp:
+    return UserSearchRespFactory.build()

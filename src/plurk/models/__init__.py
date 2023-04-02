@@ -7,6 +7,7 @@ from .karma_stats import KarmaStats
 from .plurk import NewPlurk, Plurk
 from .profile import OwnProfile, PublicProfile
 from .response import NewResponse, Response, ResponsesGetResp
+from .search import PlurkSearchResp, UserSearchResp
 from .timeline import GetPlurkResp, GetPlurksResp, UploadPictureResp
 from .user_channel import ChannelResp, NoDataChannelResp, UserChannel
 from .user_data import (PublicUserData, SimpleUserData, UpdateAvatarResp,
@@ -34,6 +35,8 @@ __all__ = [
     'Plurk',
     'PublicProfile',
     'PublicUserData',
+    'PlurkSearchResp',
+    'UserSearchResp',
     'GetPlurkResp',
     'GetPlurksResp',
     'SimpleUserData',

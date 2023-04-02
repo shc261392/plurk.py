@@ -133,5 +133,13 @@ class Client(BaseClient):
         return apis.Alerts(self)
 
     @property
+    def plurk_search(self):
+        return apis.PlurkSearch(self)
+
+    @property
+    def user_search(self):
+        return apis.UserSearch(self)
+
+    @property
     def helpers(self):
         return apis.Helper(self)
