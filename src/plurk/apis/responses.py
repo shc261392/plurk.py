@@ -26,7 +26,6 @@ class Responses(BaseApi):
         )
         resp = self.client.http_client.get(endpoint, params=params)
         validate_resp(resp)
-        print(resp.json())
         return ResponsesGetResp(**resp.json())
 
     def response_add(self, plurk_id: int, content: str, qualifier: Qualifier = Qualifier.EMPTY):

@@ -36,8 +36,7 @@ class Users(BaseApi):
             'privacy': privacy,
             'date_of_birth': date_of_birth,
         }
-        print(f'payload {payload}')
-        resp = self.client.http_client.post(endpoint)
+        resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
         return UserData(**resp.json())
 

@@ -280,7 +280,6 @@ class Timeline(BaseApi):
         payload = build_params(ids=str(ids))
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
-        print(resp.json())
         return ActionResp(**resp.json())
 
     def unreplurk(self, ids: List[int]):
@@ -320,7 +319,6 @@ class Timeline(BaseApi):
                 endpoint, files={'image': ('image', image)}
             )
         validate_resp(resp)
-        print(resp.json())
         return UploadPictureResp(**resp.json())
 
     def report_abuse(self, plurk_id: int, category: AbuseCategory):
