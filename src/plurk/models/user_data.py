@@ -11,12 +11,12 @@ from plurk.utils import parse_time_validator
 class FilterSetting(BaseModel):
     porn: int
     anonymous: int
-    keywords: str
+    keywords: Optional[str]
 
 
 class Anniversary(BaseModel):
-    years: int
-    days: int
+    years: Optional[int]
+    days: Optional[int]
 
 
 class Birthday(BaseModel):
