@@ -16,14 +16,14 @@ This is a WIP project. Currently available features:
     - `/APP/Responses`
     - `/APP/FriendsFans`
     - `/APP/Alerts`
+    - `/APP/PlurkSearch`
+    - `/APP/UserSearch`
+    - `/APP/Emoticons`
 - All API endpoints listed as OAuth utilities in official API doc.
 - A helper function to subscribe to timeline updates easily. See [example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py) for how to do it.
 
 To-do list:
 
-- API endpoints `/APP/PlurkSearch`
-- API endpoints `/APP/UserSearch`
-- API endpoints under `/APP/Emoticons`
 - API endpoints under `/APP/Blocks`
 - API endpoints under `/APP/Cliques`
 

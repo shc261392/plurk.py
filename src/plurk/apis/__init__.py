@@ -1,4 +1,5 @@
 from .alerts import Alerts
+from .emoticons import Emoticons
 from .friends_fans import FriendsFans
 from .helper import Helper
 from .plurk_search import PlurkSearch
@@ -11,6 +12,7 @@ from .users import Users
 
 __all__ = [
     'Alerts',
+    'Emoticons',
     'Helper',
     'FriendsFans',
     'PlurkSearch',

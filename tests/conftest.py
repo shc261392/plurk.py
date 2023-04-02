@@ -1,5 +1,6 @@
+import json
 from datetime import datetime
-from typing import List
+from typing import Dict, List
 
 import pytest
 from pydantic_factories import ModelFactory
@@ -112,6 +113,23 @@ def action_resp_fixture(request) -> ActionResp:
 @pytest.fixture()
 def karma_stats_fixture(request) -> KarmaStats:
     return KarmaStatsFactory.build()
+
+
+@pytest.fixture()
+def get_emoticons_fixture(request) -> Dict:
+    json_str = """
+    {
+        "karma": {
+            "0": [
+                [
+                    ":-))",
+                    "https://s.plurk.com/emoticons/basic/9a3f0db1c41e5970355e.gif"
+                ]
+            ]
+        }
+    }
+    """
+    return json.loads(json_str)
 
 
 @pytest.fixture()

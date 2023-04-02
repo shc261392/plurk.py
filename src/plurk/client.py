@@ -141,5 +141,9 @@ class Client(BaseClient):
         return apis.UserSearch(self)
 
     @property
+    def emoticons(self):
+        return apis.Emoticons(self)
+
+    @property
     def helpers(self):
         return apis.Helper(self)
