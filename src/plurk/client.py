@@ -145,5 +145,9 @@ class Client(BaseClient):
         return apis.Emoticons(self)
 
     @property
+    def blocks(self):
+        return apis.Blocks(self)
+
+    @property
     def helpers(self):
         return apis.Helper(self)

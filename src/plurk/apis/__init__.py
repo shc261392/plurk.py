@@ -1,4 +1,5 @@
 from .alerts import Alerts
+from .blocks import Blocks
 from .emoticons import Emoticons
 from .friends_fans import FriendsFans
 from .helper import Helper
@@ -12,6 +13,7 @@ from .users import Users
 
 __all__ = [
     'Alerts',
+    'Blocks',
     'Emoticons',
     'Helper',
     'FriendsFans',

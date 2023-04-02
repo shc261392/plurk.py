@@ -5,11 +5,12 @@ from typing import Dict, List
 import pytest
 from pydantic_factories import ModelFactory
 
-from plurk.models import (ActionResp, GetPlurkResp, GetPlurksResp, KarmaStats,
-                          OwnProfile, Plurk, PlurkSearchResp, PublicProfile,
-                          PublicUserData, Response, ResponsesGetResp,
-                          SimpleUserData, UpdateAvatarResp, UploadPictureResp,
-                          UserChannel, UserData, UserSearchResp)
+from plurk.models import (ActionResp, GetBlocksResp, GetPlurkResp,
+                          GetPlurksResp, KarmaStats, OwnProfile, Plurk,
+                          PlurkSearchResp, PublicProfile, PublicUserData,
+                          Response, ResponsesGetResp, SimpleUserData,
+                          UpdateAvatarResp, UploadPictureResp, UserChannel,
+                          UserData, UserSearchResp)
 from plurk.utils import format_as_plurk_time
 
 
@@ -23,6 +24,10 @@ class ActionRespFactory(ModelFactory):
 
 class KarmaStatsFactory(ModelFactory):
     __model__ = KarmaStats
+
+
+class GetBlocksRespFactory(ModelFactory):
+    __model__ = GetBlocksResp
 
 
 class GetPlurkRespFactory(ModelFactory):
@@ -113,6 +118,11 @@ def action_resp_fixture(request) -> ActionResp:
 @pytest.fixture()
 def karma_stats_fixture(request) -> KarmaStats:
     return KarmaStatsFactory.build()
+
+
+@pytest.fixture()
+def get_blocks_resp_fixture(request) -> GetBlocksResp:
+    return GetBlocksRespFactory.build()
 
 
 @pytest.fixture()

@@ -2,6 +2,7 @@ from .alert import (FriendshipAcceptedAlert, FriendshipPendingAlert,
                     FriendshipRequestAlert, MentionedAlert, MyRespondedAlert,
                     NewFanAlert, NewFriendAlert, PlurkLikedAlert,
                     PlurkReplurkedAlert, PrivatePlurkAlert)
+from .blocks import GetBlocksResp
 from .general_resps import ActionResp
 from .karma_stats import KarmaStats
 from .plurk import NewPlurk, Plurk
@@ -24,6 +25,7 @@ __all__ = [
     'PlurkLikedAlert',
     'PlurkReplurkedAlert',
     'PrivatePlurkAlert',
+    'GetBlocksResp',
     'ChannelResp',
     'NoDataChannelResp',
     'KarmaStats',
