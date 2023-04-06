@@ -30,6 +30,8 @@ Replace the value of `APP_KEY` and `APP_SECRET` with your Plurk app's key and se
 If you haven't create a Plurk app yet, visit the [App Sign Up](https://www.plurk.com/PlurkApp/create) page
 to register your app and retrieve your app key and app secret.
 
+Note that using hardcoded credentials is a bad practice. The script here is only for demonstration purpose, do not use it without modification in production.
+
 
 ```python
 from plurk import Client

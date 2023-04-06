@@ -6,6 +6,9 @@ Prerequiste:
 What this example script does:
 1. Perform OAuth with pre-fetched tokens.
 2. Use the helper function to run indefintely and print all received updates.
+
+Note that using hardcoded credentials is a bad practice.
+The script here is only for demonstration purpose, do not use it without modification in production.
 """
 
 from plurk import Client

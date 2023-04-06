@@ -8,8 +8,11 @@ In other words, in the most common scenario for a Plurk bot, the OAuth access to
 can be obtained in advance (by using the client, or by Purk test console
 https://www.plurk.com/OAuth/test)
 
-The script is an example for using the plurk.py if you already have the bot 
+The script is an example for using the plurk.py if you already have the bot
 user's access token.
+
+Note that using hardcoded credentials is a bad practice.
+The script here is only for demonstration purpose, do not use it without modification in production.
 """
 
 from plurk import Client
