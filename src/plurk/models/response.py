@@ -38,7 +38,7 @@ class Response(RespBase):
     plurk_id: int
     posted: datetime
     qualifier: Qualifier
-    qualifier_translated: str
+    qualifier_translated: Optional[str]
     user_id: int
     with_random_emos: Optional[bool]
 
