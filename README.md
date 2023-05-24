@@ -19,7 +19,7 @@ Testing dependencies requires Python 3.8+. The package might still works for Pyt
 ## Installation
 
 ```shell
-$ pip3 install git+https://github.com/shc261392/plurk.py
+$ pip3 install plurk.py
 ```
 
 ## Quickstart
@@ -53,6 +53,8 @@ with Client(APP_KEY, APP_SECRET) as client:
     print('Display name: ', user_data.display_name)
     print('Plurks created: ', user_data.plurks_count)
 ```
+
+For async example, check [here](https://github.com/shc261392/plurk.py/blob/main/examples/async_get_plurks.py).
 
 ## Development
 
