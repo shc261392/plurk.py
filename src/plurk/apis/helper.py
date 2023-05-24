@@ -6,6 +6,7 @@ class Helper(BaseApi):
     """The class represents the collection of helper methods build on
     existing Plurk APIs. It does not represent an API endpoint directly.
     """
+
     def subscribe_to_user_channel(self):
         """Returns a generator that yields plurks posted to the user channel.
 

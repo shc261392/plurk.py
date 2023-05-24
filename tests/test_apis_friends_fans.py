@@ -32,7 +32,7 @@ def test_get_fans_by_offset(httpx_mock: HTTPXMock, public_user_data_list_fixture
         resp = client.friends_fans.get_fans_by_offset(FAKE_USER_ID)
     assert isinstance(resp, List)
     assert [i.dict_original() for i in resp] == resp_json
-    
+
 
 def test_get_following_by_offset(httpx_mock: HTTPXMock, public_user_data_list_fixture: List[PublicUserData]):
     resp_json = [i.dict_original() for i in public_user_data_list_fixture]

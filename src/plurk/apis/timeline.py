@@ -37,14 +37,14 @@ class Timeline(BaseApi):
         return GetPlurkResp(**resp.json())
 
     def get_plurks(
-                self,
-                offset: Optional[Union[str, datetime]] = None,
-                limit: int = 20,
-                filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
-                favorers_detail=False,
-                limited_detail=False,
-                replurkers_detail=False,
-            ):
+        self,
+        offset: Optional[Union[str, datetime]] = None,
+        limit: int = 20,
+        filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
+        favorers_detail=False,
+        limited_detail=False,
+        replurkers_detail=False,
+    ):
         """Return plurks on timeline.
 
         Args:
@@ -76,14 +76,14 @@ class Timeline(BaseApi):
         return GetPlurksResp(**resp.json())
 
     def get_unread_plurks(
-                self,
-                offset: Optional[Union[str, datetime]] = None,
-                limit: int = 20,
-                filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
-                favorers_detail=False,
-                limited_detail=False,
-                replurkers_detail=False,
-            ):
+        self,
+        offset: Optional[Union[str, datetime]] = None,
+        limit: int = 20,
+        filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
+        favorers_detail=False,
+        limited_detail=False,
+        replurkers_detail=False,
+    ):
         """Return unread plurks on timeline.
 
         Args:
@@ -115,15 +115,15 @@ class Timeline(BaseApi):
         return GetPlurksResp(**resp.json())
 
     def get_public_plurks(
-                self,
-                user_id: Union[int, str],
-                offset: Optional[Union[str, datetime]] = None,
-                limit: int = 20,
-                filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
-                favorers_detail=False,
-                limited_detail=False,
-                replurkers_detail=False,
-            ):
+        self,
+        user_id: Union[int, str],
+        offset: Optional[Union[str, datetime]] = None,
+        limit: int = 20,
+        filter: Optional[Filter] = None,  # pylint: disable=redefined-builtin
+        favorers_detail=False,
+        limited_detail=False,
+        replurkers_detail=False,
+    ):
         """Return public plurks of a specific user on timeline.
 
         Args:
@@ -157,13 +157,13 @@ class Timeline(BaseApi):
         return GetPlurksResp(**resp.json())
 
     def plurk_add(
-                self,
-                content: str,
-                qualifier: Qualifier = Qualifier.EMPTY,
-                limited_to: Optional[List[int]] = None,
-                no_comments: Optional[int] = None,
-                lang: Optional[Language] = None,
-            ):
+        self,
+        content: str,
+        qualifier: Qualifier = Qualifier.EMPTY,
+        limited_to: Optional[List[int]] = None,
+        no_comments: Optional[int] = None,
+        lang: Optional[Language] = None,
+    ):
         """Add a new plurk.
 
         Args:

@@ -24,9 +24,9 @@ def get_auth_url(client: OAuth1Client, authenticate_url: str, request_token: Dic
 
 
 def fetch_access_token(
-            client_id: str, client_secret: str, access_token_url: str,
-            request_token: Dict[str, str], oauth_verifier: str,
-        ):
+    client_id: str, client_secret: str, access_token_url: str,
+    request_token: Dict[str, str], oauth_verifier: str,
+):
     with OAuth1Client(
         client_id,
         client_secret,
