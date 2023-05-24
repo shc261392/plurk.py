@@ -16,7 +16,7 @@ def get_oauth_client(
 
 
 async def get_request_token(client: AsyncOAuth1Client, request_token_url: str):
-    return await client.fetch_request_token(request_token_url)  # type: ignore
+    return await client.fetch_request_token(request_token_url)
 
 
 def get_auth_url(client: AsyncOAuth1Client, authenticate_url: str, request_token: Dict[str, str]):
