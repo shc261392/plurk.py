@@ -1,11 +1,12 @@
 # plurk.py
-An unofficial library of interacting with Plurk API 2.0 for Python 3.8+.
+An modern library of interacting with Plurk API 2.0 for Python 3.8+.
 
 ![main](https://github.com/shc261392/plurk.py/actions/workflows/ci.yml/badge.svg?branch=main)
 
 ## Features
 
 - Access Plurk API with OAuth easily. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py))
+- Full sync and async API call support.
 - Support all API endpoints listed in the official API doc.
 - A helper function to subscribe to timeline updates easily. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/subscribe_to_updates.py))
 
