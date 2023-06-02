@@ -2,7 +2,7 @@ anyio==3.6.2
 git+https://github.com/shc261392/authlib@httpx-fixes#egg=Authlib
 certifi==2022.12.7
 cffi==1.15.1
-cryptography==39.0.1
+cryptography==41.0.0
 h11==0.14.0
 httpcore==0.16.2
 httpx==0.23.1
