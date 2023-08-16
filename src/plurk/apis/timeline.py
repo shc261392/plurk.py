@@ -291,14 +291,14 @@ class Timeline(BaseApi):
         validate_resp(resp)
         return ActionResp(**resp.json())
 
-    def mark_as_read(self, ids: List[int]):
+    def mark_as_read(self, ids: List[int], note_position: Optional[bool] = None):
         """Mark plurks as read.
 
         Effectively set all plurks' `is_unread` to `0`.
         Note that Plurk does not provide any API to undo this action.
         """
         endpoint = f'{self.client.base_url}/APP/Timeline/markAsRead'
-        payload = build_params(ids=str(ids))
+        payload = build_params(ids=str(ids), note_position=note_position)
         resp = self.client.http_client.post(endpoint, json=payload)
         validate_resp(resp)
         return ActionResp(**resp.json())
