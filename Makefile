@@ -31,7 +31,7 @@ lint: $(VENV_DIR)/bin/tox
 
 .PHONY: test
 test: $(VENV_DIR)/bin/tox
-	$(VENV_DIR)/bin/tox -e pytest,report
+	$(VENV_DIR)/bin/tox -e test,report
 
 .PHONY: docs
 docs: $(VENV_DIR)/bin/$(SPHINXBUILD)
