@@ -3,7 +3,7 @@ git+https://github.com/shc261392/authlib@httpx-fixes#egg=Authlib
 certifi==2024.7.4
 cffi==1.15.1
 cryptography==44.0.1
-h11==0.14.0
+h11==0.16.0
 httpcore==0.16.2
 httpx==0.23.1
 idna==3.7
