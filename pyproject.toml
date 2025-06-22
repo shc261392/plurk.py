@@ -4,8 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "plurk.py"
-dynamic = ["version", "readme"]
+dynamic = ["version"]
 description = "A modern Plurk API 2.0 SDK for Python"
+readme = "README.md"
 keywords = ["plurk", "oauth", "SDK"]
 license = { text = "MIT" }
 classifiers = [
@@ -36,7 +37,6 @@ package-dir = { "" = "src" }
 
 [tool.setuptools.dynamic]
 version = { attr = "plurk.__version__" }
-readme = { file = ["README.rst", "USAGE.rst"] }
 
 [tool.setuptools.packages.find]
 where = ["src"]
