@@ -2,10 +2,9 @@ from typing import Dict, TypeVar
 
 from authlib.integrations.httpx_client import AsyncOAuth1Client
 
-from plurk import async_apis, async_oauth
+from plurk import async_apis
 from plurk.clients.base import BaseClient
 from plurk.exceptions import validate_resp
-
 
 T = TypeVar('T')
 
@@ -13,9 +12,7 @@ T = TypeVar('T')
 class AsyncClient(BaseClient):
     """Asynchronous client for Plurk API
     """
-    @property
-    def http_client_class(self):
-        return AsyncOAuth1Client
+    http_client_class = AsyncOAuth1Client
 
     async def __aenter__(self):
         await self.setup_client()
@@ -27,7 +24,7 @@ class AsyncClient(BaseClient):
     async def setup_client(self):
         if self.http_client:
             await self.http_client.aclose()  # type: ignore
-        self.http_client = async_oauth.get_oauth_client(
+        self.http_client = self.http_client_class(
             self.app_key,
             self.app_secret,
             self.token,
@@ -35,23 +32,31 @@ class AsyncClient(BaseClient):
         )
 
     async def get_request_token(self):
-        return await async_oauth.get_request_token(
-            self.http_client,
-            request_token_url=f'{self.base_url}/OAuth/request_token',
+        return await self.http_client.fetch_request_token(
+            url=f'{self.base_url}/OAuth/request_token',
         )
 
     def get_auth_url(self, request_token: Dict):
-        return async_oauth.get_auth_url(
-            self.http_client,
-            authenticate_url=f'{self.base_url}/OAuth/authorize',
-            request_token=request_token
+        return self.http_client.create_authorization_url(
+            f'{self.base_url}/OAuth/authorize',
+            request_token['oauth_token'],
         )
 
     async def fetch_access_token(self, request_token: Dict, oauth_verifier: str):
-        access_token = await async_oauth.fetch_access_token(
-            self.app_key, self.app_secret,
-            access_token_url=f'{self.base_url}/OAuth/access_token',
-            request_token=request_token,
+        """Fetch access token using request token and oauth verifier
+
+        Args:
+            request_token (Dict): The request token obtained during authorization
+            oauth_verifier (str): The oauth verifier returned by Plurk after user authorization
+
+        Returns:
+            Dict: The access token information
+        """
+        self.token = request_token['oauth_token']
+        self.token_secret = request_token['oauth_token_secret']
+        await self.setup_client()
+        access_token = await self.http_client.fetch_access_token(
+            url=f'{self.base_url}/OAuth/access_token',
             oauth_verifier=oauth_verifier,
         )
         self.token = access_token['oauth_token']
@@ -60,6 +65,12 @@ class AsyncClient(BaseClient):
         return access_token
 
     async def set_access_token(self, token: str, token_secret: str):
+        """Set the access token and token secret for the client
+
+        Args:
+            token (str): The access token
+            token_secret (str): The access token secret
+        """
         self.token = token
         self.token_secret = token_secret
         await self.setup_client()
