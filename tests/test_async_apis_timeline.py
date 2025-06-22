@@ -210,7 +210,11 @@ async def test_mark_as_read(httpx_mock: HTTPXMock, action_resp_fixture: ActionRe
 
 
 @pytest.mark.asyncio
-async def test_upload_picture(httpx_mock: HTTPXMock, mocker: MockerFixture, upload_picture_resp_fixture: UploadPictureResp):
+async def test_upload_picture(
+    httpx_mock: HTTPXMock,
+    mocker: MockerFixture,
+    upload_picture_resp_fixture: UploadPictureResp,
+):
     resp_json = upload_picture_resp_fixture.dict_original()
     httpx_mock.add_response(
         status_code=200,

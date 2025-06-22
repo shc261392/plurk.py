@@ -14,3 +14,5 @@ __all__ = [
     'Qualifier',
     'Relationship',
 ]
+
+__version__ = '0.0.4'

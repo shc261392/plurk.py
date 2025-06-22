@@ -1,3 +1,68 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=64.0"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "plurk.py"
+dynamic = ["version", "readme"]
+description = "A modern Plurk API 2.0 SDK for Python"
+keywords = ["plurk", "oauth", "SDK"]
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.8"
+dependencies = ["Authlib", "httpx", "pydantic<2", "python-dotenv"]
+
+[project.optional-dependencies]
+test = [
+    "coverage",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-mock",
+    "pytest-httpx",
+    "pydantic-factories",
+]
+lint = ["flake8", "pylint", "bandit"]
+docs = ["sphinx", "sphinx-rtd-theme"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.dynamic]
+version = { attr = "plurk.__version__" }
+readme = { file = ["README.rst", "USAGE.rst"] }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["docs", "tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["plurk"]
+
+[tool.coverage.paths]
+source = ["src", ".tox/*/site-packages"]
+
+[tool.pylint.message_control]
+disable = [
+    "broad-except",
+    "import-error",
+    "invalid-name",
+    "line-too-long",
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "too-few-public-methods",
+    "too-many-public-methods",
+    "too-many-arguments",
+    "too-many-positional-arguments",
+    "duplicate-code",
+]
+
+[tool.pylint]
+extension-pkg-whitelist = "pydantic"

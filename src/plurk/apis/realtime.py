@@ -2,7 +2,7 @@ import re
 from typing import Optional
 
 from plurk.apis.base import BaseApi
-from plurk.exceptions import validate_resp, RespValidationError
+from plurk.exceptions import RespValidationError, validate_resp
 from plurk.models import ChannelResp, NoDataChannelResp, UserChannel
 from plurk.utils import read_jsonp
 

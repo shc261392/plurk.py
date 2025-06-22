@@ -1,25 +1,35 @@
 """Quickstart example
 
-Prerequiste:
-- Create a Plurk app at https://www.plurk.com/PlurkApp/create)
+Prerequisites:
+- Create a Plurk app at https://www.plurk.com/PlurkApp/create
+- Create a .env file with your APP_KEY and APP_SECRET
 
 What this example script does:
-1. Perform the OAuth 1.0 flow
-    a. Get request token
-    b. Get authorization URL
-    c. Ask user to open authorization URL with browser, and take auth code as input
-    d. Fetch user's access token with the request token and auth code
-
-2. Call /APP/Users/me to get the current user's user data, and print some fields for demonstration
-
-Note that using hardcoded credentials is a bad practice.
-The script here is only for demonstration purpose, do not use it without modification in production.
+1.  Loads credentials from the .env file.
+2.  Performs the OAuth 1.0 flow:
+    a. Gets a request token.
+    b. Generates an authorization URL.
+    c. Prompts the user to authorize the app and provide the auth code.
+    d. Fetches the user's access token.
+3.  Calls /APP/Users/me to get the current user's data and prints some fields for demonstration.
 """
+
+import os
+import sys
+from typing import cast
+
+from dotenv import load_dotenv
 
 from plurk import Client
 
-APP_KEY = '<your-plurk-app-key>'
-APP_SECRET = '<your-plurk-app-secret>'
+load_dotenv()
+
+APP_KEY = cast(str, os.getenv('APP_KEY'))
+APP_SECRET = cast(str, os.getenv('APP_SECRET'))
+
+if not APP_KEY or not APP_SECRET:
+    print('APP_KEY and APP_SECRET must be set in your .env file.', file=sys.stderr)
+    sys.exit(1)
 
 
 with Client(APP_KEY, APP_SECRET) as client:

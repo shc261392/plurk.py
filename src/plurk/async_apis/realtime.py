@@ -2,7 +2,7 @@ import re
 from typing import Optional
 
 from plurk.async_apis.base import BaseApi
-from plurk.exceptions import validate_resp, RespValidationError
+from plurk.exceptions import RespValidationError, validate_resp
 from plurk.models import ChannelResp, NoDataChannelResp, UserChannel
 from plurk.utils import read_jsonp
 
@@ -39,7 +39,7 @@ class Realtime(BaseApi):
         comet_channel_url can be retrieved by calling `get_user_channel()` method
         and access the `comet_channel` attribute.
 
-        By default the request timeout is 120s. The official API doc states the
+        By default the request timeout is 30s. The official API doc states the
         request could be pending for about 50s before returning a response.
         """
         endpoint = update_new_offset(comet_channel_url, new_offset)
