@@ -39,7 +39,7 @@ class Realtime(BaseApi):
         comet_channel_url can be retrieved by calling `get_user_channel()` method
         and access the `comet_channel` attribute.
 
-        By default the request timeout is 30s. The official API doc states the
+        By default the request timeout is 120s. The official API doc states the
         request could be pending for about 50s before returning a response.
         """
         endpoint = update_new_offset(comet_channel_url, new_offset)
