@@ -1,8 +1,12 @@
 # plurk.py
 
-A modern Python library for the Plurk API 2.0, providing an easy-to-use interface for both synchronous and asynchronous interactions.
+[![PyPI version](https://badge.fury.io/py/plurk.py.svg)](https://badge.fury.io/py/plurk.py)
+[![Python versions](https://img.shields.io/pypi/pyversions/plurk.py.svg)](https://pypi.org/project/plurk.py)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://github.com/shc261392/plurk.py/actions/workflows/python-package.yml/badge.svg)](https://github.com/shc261392/plurk.py/actions/workflows/python-package.yml)
+[![codecov](https://codecov.io/gh/shc261392/plurk.py/branch/main/graph/badge.svg)](https://codecov.io/gh/shc261392/plurk.py)
 
-![main](https://github.com/shc261392/plurk.py/actions/workflows/ci.yml/badge.svg?branch=main)
+A modern Python library for the Plurk API 2.0, providing an easy-to-use interface for both synchronous and asynchronous interactions.
 
 ## Features
 
