@@ -30,4 +30,4 @@ class Helper(BaseApi):
                 if isinstance(channel_resp, ChannelResp):
                     yield channel_resp
             except Exception as e:
-                logger.error(f'Error occurred: {e}')
+                logger.error('Error occurred: %s', e)
