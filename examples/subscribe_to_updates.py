@@ -1,23 +1,35 @@
 """ Subscribe to updates example
 
-Prerequiste:
-- Create a Plurk app at https://www.plurk.com/PlurkApp/create)
+Prerequisites:
+- Create a Plurk app at https://www.plurk.com/PlurkApp/create
+- Obtain an access token and token secret for your bot user.
+- Create a .env file with your APP_KEY, APP_SECRET, TOKEN, and TOKEN_SECRET.
 
 What this example script does:
-1. Perform OAuth with pre-fetched tokens.
-2. Use the helper function to run indefintely and print all received updates.
-
-Note that using hardcoded credentials is a bad practice.
-The script here is only for demonstration purpose, do not use it without modification in production.
+1.  Loads credentials from the .env file.
+2.  Performs OAuth with pre-fetched tokens.
+3.  Uses the helper function to run indefinitely and print all received updates.
 """
+
+import os
+import sys
+from typing import cast
+
+from dotenv import load_dotenv
 
 from plurk import Client
 from plurk.models import NewPlurk, NewResponse
 
-APP_KEY = '<your-plurk-app-key>'
-APP_SECRET = '<your-plurk-app-secret>'
-TOKEN = '<your-bot-user-token>'
-TOKEN_SECRET = '<your-bot-user-token-secret>'
+load_dotenv()
+
+APP_KEY = cast(str, os.getenv('APP_KEY'))
+APP_SECRET = cast(str, os.getenv('APP_SECRET'))
+TOKEN = cast(str, os.getenv('TOKEN'))
+TOKEN_SECRET = cast(str, os.getenv('TOKEN_SECRET'))
+
+if not all([APP_KEY, APP_SECRET, TOKEN, TOKEN_SECRET]):
+    print('APP_KEY, APP_SECRET, TOKEN, and TOKEN_SECRET must be set in your .env file.', file=sys.stderr)
+    sys.exit(1)
 
 
 with Client(APP_KEY, APP_SECRET) as client:

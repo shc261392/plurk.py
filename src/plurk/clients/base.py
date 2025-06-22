@@ -1,13 +1,10 @@
-from abc import abstractmethod
+from abc import ABC
 
 
-class BaseClient():
+class BaseClient(ABC):
     """Base class for clients
     """
-    @property
-    @abstractmethod
-    def http_client_class(self):
-        pass
+    http_client_class = None
 
     def __init__(self, app_key: str, app_secret: str, base_url='https://www.plurk.com'):
         self.http_client = None

@@ -1,44 +1,66 @@
 # plurk.py
-An modern library of interacting with Plurk API 2.0 for Python 3.8+.
+
+A modern Python library for the Plurk API 2.0, providing an easy-to-use interface for both synchronous and asynchronous interactions.
 
 ![main](https://github.com/shc261392/plurk.py/actions/workflows/ci.yml/badge.svg?branch=main)
 
 ## Features
 
-- Access Plurk API with OAuth easily. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py))
-- Full sync and async API call support.
-- Support all API endpoints listed in the official API doc.
-- A helper function to subscribe to timeline updates easily. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/subscribe_to_updates.py))
+- Effortless Plurk API access with OAuth. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/quickstart.py))
+- Full support for both synchronous and asynchronous API calls.
+- Complete coverage of all API endpoints listed in the official documentation.
+- A convenient helper function for subscribing to timeline updates. ([Code example](https://github.com/shc261392/plurk.py/blob/main/examples/subscribe_to_updates.py))
 
-
-## Requirement
+## Requirements
 
 - Python 3.8+
-
-Testing dependencies requires Python 3.8+. The package might still works for Python 3.7 though it is not recommended.
 
 ## Installation
 
 ```shell
-$ pip3 install plurk.py
+pip3 install plurk.py
 ```
 
 ## Quickstart
 
-See the example below for how to use **plurk.py**.
+Follow these steps to get started with **plurk.py**.
 
-Replace the value of `APP_KEY` and `APP_SECRET` with your Plurk app's key and secret.
-If you haven't create a Plurk app yet, visit the [App Sign Up](https://www.plurk.com/PlurkApp/create) page
-to register your app and retrieve your app key and app secret.
+### 1. Obtain Plurk API Credentials
 
-Note that using hardcoded credentials is a bad practice. The script here is only for demonstration purpose, do not use it without modification in production.
+If you don't have a Plurk app, create one on the [App Sign Up](https.www.plurk.com/PlurkApp/create) page to get your app key and secret.
 
+### 2. Set Up Environment Variables
+
+Create a `.env` file in your project's root directory and add your Plurk app's key and secret:
+
+```dotenv
+APP_KEY=<your-plurk-app-key>
+APP_SECRET=<your-plurk-app-secret>
+```
+
+A `.env.example` file is provided as a template.
+
+### 3. Install Dependencies
+
+Install the required libraries, including `python-dotenv` for managing environment variables:
+
+```shell
+pip3 install -r requirements.txt
+```
+
+### 4. Run the Example
+
+The following example demonstrates how to authenticate and access the Plurk API using **plurk.py**:
 
 ```python
+import os
+from dotenv import load_dotenv
 from plurk import Client
 
-APP_KEY = '<your-plurk-app-key>'
-APP_SECRET = '<your-plurk-app-secret>'
+load_dotenv()
+
+APP_KEY = os.getenv('APP_KEY')
+APP_SECRET = os.getenv('APP_SECRET')
 
 
 with Client(APP_KEY, APP_SECRET) as client:
@@ -55,28 +77,29 @@ with Client(APP_KEY, APP_SECRET) as client:
     print('Plurks created: ', user_data.plurks_count)
 ```
 
-For async example, check [here](https://github.com/shc261392/plurk.py/blob/main/examples/async_get_plurks.py).
+For an asynchronous example, check the [async example](https://github.com/shc261392/plurk.py/blob/main/examples/async_get_plurks.py).
 
 ## Development
 
 ```shell
-$ git clone git@github.com:shc261392/plurk.py.git
-$ cd plurk.py
-$ make test
-$ make install
+git clone git@github.com:shc261392/plurk.py.git
+cd plurk.py
+make install
 ```
 
-`make install` will automatically create a virtualenv in the current folder named `.venv`.
+`make install` will create a virtual environment in the `.venv` folder.
 
-To run test suite:
+To run the test suite:
 
 ```shell
-$ make test
+make test
 ```
 
 ## Dependencies
 
-**plurk.py** depends on the following brilliant works:
-- [Authlib](https://github.com/lepture/authlib) for OAuth. The project uses the [forked version](https://github.com/shc261392/authlib).
-- [httpx](https://github.com/encode/httpx), a solid library for both sync and async HTTP requests
-- [pydantic](https://github.com/pydantic/pydantic) for building data models with great typing and validation support.
+**plurk.py** relies on these excellent libraries:
+
+- [Authlib](https://github.com/lepture/authlib) for OAuth, using a [forked version](https://github.com/shc261392/authlib).
+- [httpx](https://github.com/encode/httpx) for both synchronous and asynchronous HTTP requests.
+- [pydantic](https://github.com/pydantic/pydantic) for data models with robust typing and validation.
+- [python-dotenv](https://github.com/theskumar/python-dotenv) for managing environment variables.

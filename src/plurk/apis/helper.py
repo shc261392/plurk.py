@@ -1,5 +1,9 @@
+import logging
+
 from plurk.apis.base import BaseApi
 from plurk.models import ChannelResp
+
+logger = logging.getLogger(__name__)
 
 
 class Helper(BaseApi):
@@ -18,9 +22,12 @@ class Helper(BaseApi):
         user_channel = self.client.realtime.get_user_channel()
         new_offset = None
         while True:
-            channel_resp = self.client.realtime.get_channel_response(
-                user_channel.comet_server, timeout=120, new_offset=new_offset
-            )
-            new_offset = channel_resp.new_offset
-            if isinstance(channel_resp, ChannelResp):
-                yield channel_resp
+            try:
+                channel_resp = self.client.realtime.get_channel_response(
+                    user_channel.comet_server, new_offset=new_offset
+                )
+                new_offset = channel_resp.new_offset
+                if isinstance(channel_resp, ChannelResp):
+                    yield channel_resp
+            except Exception as e:
+                logger.error('Error occurred: %s', e)
