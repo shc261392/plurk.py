@@ -3,7 +3,7 @@ anyio==4.9.0
 Authlib @ git+https://github.com/shc261392/authlib@fe1bd2fece34bad479e2d7c0756c378641340c06
 certifi==2025.6.15
 cffi==1.17.1
-cryptography==46.0.5
+cryptography==48.0.1
 exceptiongroup==1.3.0
 h11==0.16.0
 httpcore==1.0.9
