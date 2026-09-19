@@ -1,5 +1,5 @@
 annotated-types==0.7.0
-anyio==4.9.0
+anyio==4.14.2
 Authlib @ git+https://github.com/shc261392/authlib@fe1bd2fece34bad479e2d7c0756c378641340c06
 certifi==2025.6.15
 cffi==1.17.1
